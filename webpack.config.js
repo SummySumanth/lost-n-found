@@ -10,9 +10,18 @@ const moduleObj = {
         },
         {
             test: /\.scss$/,
-            exclude: /node_modules/,
-            loaders:['css-loader','sass-loader']
-        }
+            use: [
+              {
+                loader: "style-loader" // creates style nodes from JS strings
+              },
+              {
+                loader: "css-loader" // translates CSS into CommonJS
+              },
+              {
+                loader: "sass-loader" // compiles Sass to CSS
+              }
+            ]
+          }
     ],
 };
 
@@ -21,7 +30,7 @@ module.exports = {
     mode: 'development',
     output : {
         filename: 'bundle.js',
-        path: path.resolve(__dirname + '/dist/public')
+        path: path.resolve(__dirname + '/dist/public/')
     },
     resolve : {
         extensions:['.js','.jsx']
@@ -31,8 +40,10 @@ module.exports = {
       new HtmlWebpackPlugin({ 
         title:"Summy's Boilerplate", 
         hash: true,
+        inject: false,
+        template: 'template.ejs'
       }),
-      new ReactRootPlugin()
+      // new ReactRootPlugin()
     ]
 };
 

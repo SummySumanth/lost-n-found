@@ -1,16 +1,37 @@
 let express = require('express');
+let mongoose = require('mongoose');
+
 let routes = require('./routes');
 
 let app = express();
 
-app.use(express.static(__dirname + '/dist/public'));
+let connectToDb = () =>{
+    mongoose.connect('mongodb://127.0.0.1:27017/lostAndFound');
+    
+    mongoose.connection.once('open',()=>{
+        console.log('Connection to database has been made');
+    }).on('error',(error)=>{
+        console.log('Error in connecting to database : ', error);
+    });
+}
 
-app.use('/api', routes);
+let startServer = () =>{
+    // Routing configurations 
+    app.use(express.static(__dirname + '/dist/public'));
 
-app.get('*', function(req, res){
-    res.sendFile(__dirname + '/dist/public/index.html');
-  });
+    app.use('/api',routes);
 
-app.listen(8000, () =>{
-    console.log('Server is now running at post 8000 in localhost');
-})
+    app.get('*', function(req, res){
+        res.sendFile(__dirname + '/dist/public/index.html');
+    });
+
+    // Connection to db
+    connectToDb();
+
+    // Starting Server
+    app.listen(8000, () =>{
+        console.log('Server is now running at post 8000 in localhost');
+    });
+}
+
+startServer();

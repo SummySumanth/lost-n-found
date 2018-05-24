@@ -4,9 +4,9 @@ import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { createLogger } from 'redux-logger';
 import allReducers from './reducers/index';
-import DummyComponent from './components/DummyComponent';
+import Routes from './routes';
 
-import '../scss/index.scss';
+import '../scss/start.scss';
 
 
 const loggerMiddleware = createLogger({ predicate: () => ({ logger: console, diff: true }) });
@@ -19,7 +19,7 @@ const store = createStore(
 
 ReactDOM.render(
     <Provider store={store}>
-        <DummyComponent />
+        <Routes />
     </Provider>
     ,document.getElementById('root')
 );
