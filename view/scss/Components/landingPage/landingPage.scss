@@ -1,3 +1,13 @@
+@import "../../assets/fonts/allFonts";
+@import "../../assets/colors/allColors";
+
+
+body{
+    background-color: #000000;
+    color:#fff;
+    font-family: 'Open Sans', sans-serif;
+}
+
 .lnf-landingPage-videoBg{
     position: fixed;
     top: 50%;
@@ -9,7 +19,7 @@
     z-index: -100;
     transform: translateX(-50%) translateY(-50%);
     // background: url('//demosthenes.info/assets/images/polina.jpg') no-repeat;
-    filter: brightness(50%) blur(5px);
+    filter: blur(5px);
     background-size: cover;
     transition: 1s opacity;
 }
@@ -20,22 +30,93 @@
     width: 100%;
     position: absolute;
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
+}
+.lnf-landingpage-container-body{
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
-
 .lnf-landingPage-titleLeft{
     font-family: Comfortaa,cursive;
-    color: #fff;
+    color: rgba(255, 255, 255, 0.82);
     text-align: right;
     font-size: 65pt;
-    text-shadow: 0px 0px 23px rgb(0, 0, 0);
+    cursor: default;
+    user-select: none;
+    margin-right: 15px;
+    text-shadow: 0 0 50px #000000db;
 }
 
 .lnf-landingpage-card-container{
-    background: rgba(0, 0, 0, 0.7);
-    width: 37%;
-    height: 60%;
+    display: flex;
+    background: hsla(0,0%,100%,.84);
+    border-radius: 0;
+    padding: 30px 30px 15px 30px;
+    height: 50vh;
+    width: 60vh;
+    min-height: 40vh;
+
+    box-shadow: 0 0 140px -25px #0000007a;
+}
+
+.lnf-LPcard-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.lnf-LPcard-header{
+    font-size: 20pt;
+    color: $color-font-light-mode;
+}
+
+.lnf-LPcard-content{
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start; /* align items in Main Axis */
+    align-items: stretch; /* align items in Cross Axis */
+    align-content: stretch; /* Extra space in Cross Axis */
+}
+
+.lnf-LPcard-content-body{
+    flex: 1;
+    padding: 12px;
+    margin: 20px 0px;
+    background: #00000024;
+    overflow: auto;
+    border: solid 1px #f3f3f3a6;
     border-radius: 3px;
-    border: solid 1px #444;
+}
+
+.lnf-LPcard-actions{
+    display: flex;
+    justify-content: space-between;
+}
+
+.lnf-LPcard-content-body-signin{
+    flex: 1;
+    // padding: 12px;
+    margin: 20px 0px;
+}
+
+.lnf-LPcard-content-body-signin-social{
+    display: flex;
+    justify-content: space-between
+}
+.lnf-LPcard-content-body-signin-social-logo{
+    width: 45%;
+    cursor: pointer;
+    align-self: center;
+    transition: all 500ms ease;
+}
+
+.lnf-LPcard-content-body-signin-social-logo:hover{
+    filter: brightness(80%);
+}
+.lnf-LPcard-content-body-signin-social-logo:active{
+    filter: brightness(60%);
 }

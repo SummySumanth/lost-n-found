@@ -1,9 +1,19 @@
-@import "./assets/fonts/allFonts";
+// @import "./assets/fonts/allFonts";
 
-@import "./Components/landingPage/landingPage";
+// @import "./Components/landingPage/landingPage";
 
-@import "./Components/common/common";
+// @import "./Components/common/common";
 
-div{
-    color: white
+// div{
+//     color: white
+// }
+
+body{
+    -webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+user-select: none;
+}
+
+a{
+    text-decoration: none;
 }

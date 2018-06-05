@@ -8,6 +8,8 @@ import NotFound from './routes/notFound/NotFound';
 
 
 
+
+
 class Routes extends Component{
     render(){
         return(
@@ -16,6 +18,7 @@ class Routes extends Component{
                     <Route exact path='/' render={() => (    <Redirect to="/landing" />      )}/>
                     <Route path='/landing' component={LandingPage}/>
                     <Route path='/home' component={Home}/>
+                    <Route path='/notFound' component={NotFound}/>
                     <Route path='/*' component={NotFound}/>
                 </Switch>
             </BrowserRouter>

@@ -9,6 +9,29 @@ import Routes from './routes';
 import '../scss/start.scss';
 
 
+
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
+
+const theme = createMuiTheme({
+    palette: {
+      secondary: {
+        light: '#F5F5F5',
+        main: '#9E9E9E',
+        dark: '#616161',
+        contrastText: '#212121'
+      },
+      primary: {
+        light: '#FFCDD2',
+        main: '#F44336',
+        dark: '#D32F2F',
+        contrastText: '#fff',
+      },
+    },
+  });
+
+
+
 const loggerMiddleware = createLogger({ predicate: () => ({ logger: console, diff: true }) });
 
 
@@ -19,7 +42,9 @@ const store = createStore(
 
 ReactDOM.render(
     <Provider store={store}>
-        <Routes />
+        <MuiThemeProvider theme={theme}>
+            <Routes />
+        </MuiThemeProvider>
     </Provider>
     ,document.getElementById('root')
 );

@@ -1,6 +1,8 @@
 let express = require('express');
 let mongoose = require('mongoose');
 
+let morgan = require('morgan');
+let bodyParser = require('body-parser');
 let routes = require('./routes');
 
 let app = express();
@@ -16,6 +18,10 @@ let connectToDb = () =>{
 }
 
 let startServer = () =>{
+    // Middlewears
+    app.use(morgan('dev'));
+    app.use(bodyParser.json());
+
     // Routing configurations 
     app.use(express.static(__dirname + '/dist/public'));
 
@@ -29,8 +35,8 @@ let startServer = () =>{
     connectToDb();
 
     // Starting Server
-    app.listen(8000, () =>{
-        console.log('Server is now running at post 8000 in localhost');
+    app.listen(8000 ,"0.0.0.0", () =>{
+        console.log('Server is now running at post 8000 in localhost somechange');
     });
 }
 
