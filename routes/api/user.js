@@ -25,7 +25,7 @@ module.exports = {
 
         userInstance.save().then(()=>{
             // Respond with token
-            res.end('User has been created');
+            res.end('User    has been created');
         });
 
         
