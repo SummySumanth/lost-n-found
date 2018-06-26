@@ -36,6 +36,7 @@ let startServer = () =>{
 
     // Starting Server
     app.listen(8000 ,"0.0.0.0", () =>{
+        console.clear();
         console.log('Server is now running at post 8000 in localhost somechange');
     });
 }
