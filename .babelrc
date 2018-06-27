@@ -1,3 +1,13 @@
 {
-    "presets": ["env","react","airbnb"]
+    "presets": [
+        "env",
+        "react",
+        "airbnb"
+    ],
+    "plugins": [
+      "syntax-dynamic-import", 
+      "transform-object-rest-spread",
+      "transform-class-properties", 
+      "transform-regenerator"
+    ]
 }

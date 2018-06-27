@@ -1,4 +1,5 @@
 let path = require('path');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ReactRootPlugin = require('html-webpack-root-plugin');
 const moduleObj = {
@@ -43,6 +44,7 @@ module.exports = {
         inject: false,
         template: 'template.ejs'
       }),
+      new BundleAnalyzerPlugin(),
       // new ReactRootPlugin()
     ]
 };

@@ -1,15 +1,9 @@
-# Boilerplate with node and react 
+# How to run ?
 
-## Node - Server part
+npm install
 
-### Things that has been installed
-Express
-Nodemon
+> to install npm packages
 
-Starting point is in the root directory Server.js
+npm run start
 
-All the client side logics goes inside View
-Webpack has been configured to bundle the React part and SCSS part and the bundled JS would be placed inside dist/public/bundle.js and it would be imported by index.html file
-
-
-
+> to run the project, make sure you have got your mongo db running prior !
