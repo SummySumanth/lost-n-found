@@ -1,16 +1,36 @@
 import React,{ Component } from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
+import Loadable from 'react-loadable';
 
-import LandingPage from './routes/landingPage/LandingPage';
-import Home from './routes/home/home';
-import NotFound from './routes/notFound/NotFound';
+// import LandingPage from './routes/landingPage/LandingPage';
+// import Home from './routes/home/home';
+// import NotFound from './routes/notFound/NotFound';
 
 
 
+function MyLoadingComponent() {
+    return <div>Loading...</div>;
+}
+  
+const LandingPage = Loadable({
+    loader: () => import('./routes/landingPage/LandingPage'),
+    loading: MyLoadingComponent,
+});
+
+const Home = Loadable({
+    loader: () => import('./routes/home/home'),
+    loading: MyLoadingComponent,
+});
+
+const NotFound = Loadable({
+    loader: () => import('./routes/notFound/NotFound'),
+    loading: MyLoadingComponent,
+});
 
 
 class Routes extends Component{
+    
     render(){
         return(
             <BrowserRouter>
