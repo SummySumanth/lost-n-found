@@ -11,9 +11,9 @@ let connectToDb = () =>{
     mongoose.connect('mongodb://127.0.0.1:27017/lostAndFound');
     
     mongoose.connection.once('open',()=>{
-        console.log('Connection to database has been made');
+        console.log('DB CONNECTION SUCCESSFUL');
     }).on('error',(error)=>{
-        console.log('Error in connecting to database : ', error);
+        console.log('DB CONNECTION FAILED (check whether database is running), error object : ', error);
     });
 }
 
@@ -24,9 +24,7 @@ let startServer = () =>{
 
     // Routing configurations 
     app.use(express.static(__dirname + '/dist/public'));
-
     app.use('/api',routes);
-
     app.get('*', function(req, res){
         res.sendFile(__dirname + '/dist/public/index.html');
     });
