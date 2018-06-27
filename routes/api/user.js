@@ -2,7 +2,7 @@ const User  = require('../../models/user');
 
 module.exports = {
     createUser: async(req, res, next) =>{
-        let {name, email, phone, displayPicture, address, bloodGroup, facebook, twitter } = req.value.body;
+        let {name, password, email, phone, displayPicture, address, bloodGroup, facebook, twitter } = req.value.body;
         
         // Check if the user with the same email already exists
         let foundUser = await User.findOne({ email });
@@ -14,6 +14,7 @@ module.exports = {
         // Create new user
         let userInstance = new User({
             name, 
+            password,
             email, 
             phone, 
             displayPicture, 
@@ -23,9 +24,10 @@ module.exports = {
             twitter 
         });
 
+        console.log('terying to create user')
         userInstance.save().then(()=>{
             // Respond with token
-            res.end('User    has been created');
+            res.end('User has been created');
         });
 
         
