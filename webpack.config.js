@@ -44,7 +44,7 @@ module.exports = {
         inject: false,
         template: 'template.ejs'
       }),
-      new BundleAnalyzerPlugin(),
+      // new BundleAnalyzerPlugin(),
       // new ReactRootPlugin()
     ]
 };

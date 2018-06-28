@@ -1,6 +1,5 @@
 let express = require('express');
 let mongoose = require('mongoose');
-
 let morgan = require('morgan');
 let bodyParser = require('body-parser');
 let routes = require('./routes');

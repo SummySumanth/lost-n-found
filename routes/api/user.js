@@ -1,17 +1,18 @@
 const User  = require('../../models/user');
+const JWT = require('jsonwebtoken');
+const signToken = require('../../auth/signtoken');
+const { JWT_SECRET } = require('../../auth/configurations');
 
 module.exports = {
     createUser: async(req, res, next) =>{
         let {name, password, email, phone, displayPicture, address, bloodGroup, facebook, twitter } = req.value.body;
         
-        // Check if the user with the same email already exists
         let foundUser = await User.findOne({ email });
 
         if(foundUser){
            return  res.status(403).send({error: 'email is already in use'});
         } 
                
-        // Create new user
         let userInstance = new User({
             name, 
             password,
@@ -24,14 +25,15 @@ module.exports = {
             twitter 
         });
 
-        console.log('terying to create user')
         userInstance.save().then(()=>{
+            // Genereate Token 
+            const token = signToken(userInstance, JWT_SECRET);
+
             // Respond with token
-            res.end('User has been created');
+            res.status(200).json({ token });
         });
-
-        
+    },
+    signinUser: async(req, res, next) =>{
+        // Generate token
     }
-
-    
 };
