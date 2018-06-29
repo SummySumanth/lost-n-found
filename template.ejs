@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE>
 <html>
   <head>
     <meta charset="UTF-8">
@@ -6,6 +6,6 @@
   </head>
   <body>
         <div id="root"></div>
-        <% for (key in htmlWebpackPlugin.files.js) { %><script type="text/javascript" src="/<%= htmlWebpackPlugin.files.js[key] %>"></script><% } %>
+        <% for (key in htmlWebpackPlugin.files.js) { %><script type="text/javascript" src="/<%= htmlWebpackPlugin.files.js[key] %>/"></script><% } %>
   </body>
 </html>
