@@ -2,6 +2,9 @@ let express = require('express');
 let mongoose = require('mongoose');
 let morgan = require('morgan');
 let bodyParser = require('body-parser');
+var path = require('path');
+
+
 let routes = require('./routes');
 
 let app = express();
@@ -21,9 +24,13 @@ let startServer = () =>{
     app.use(morgan('dev'));
     app.use(bodyParser.json());
 
-    // Routing configurations 
+    // Routing configurations
+
     app.use(express.static(__dirname + '/dist/public'));
+    app.use('/lostnfound',express.static(__dirname + '/dist/public'));
     app.use('/api',routes);
+
+
     app.get('*', function(req, res){
         res.sendFile(__dirname + '/dist/public/index.html');
     });
