@@ -2,8 +2,8 @@ let express = require('express');
 let mongoose = require('mongoose');
 let morgan = require('morgan');
 let bodyParser = require('body-parser');
+let logger = require('logger').createLogger('development.log');
 var path = require('path');
-
 
 let routes = require('./routes');
 
@@ -25,12 +25,12 @@ let startServer = () =>{
     app.use(bodyParser.json());
 
     // Routing configurations
-
     app.use(express.static(__dirname + '/dist/public'));
-    app.use('/lostnfound',express.static(__dirname + '/dist/public'));
+    
+    // API & Controller requests
     app.use('/api',routes);
-
-
+    
+    // Wild Card 
     app.get('*', function(req, res){
         res.sendFile(__dirname + '/dist/public/index.html');
     });
@@ -41,7 +41,8 @@ let startServer = () =>{
     // Starting Server
     app.listen(8000 ,"0.0.0.0", () =>{
         
-        console.log('Server is now running at post 8000 in localhost somechange');
+        logger.info(`server start on port 8000 `);
+        console.log('Server is now running at port 8000 in localhost somechange');
     });
 }
 

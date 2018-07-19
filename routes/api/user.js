@@ -2,7 +2,7 @@ const User  = require('../../models/user');
 const JWT = require('jsonwebtoken');
 const signToken = require('../../auth/signtoken');
 const { JWT_SECRET } = require('../../auth/configurations');
-
+let logger = require('logger').createLogger('development.log');
 module.exports = {
     createUser: async(req, res, next) =>{
         let {name, password, email, phone, displayPicture, address, bloodGroup, facebook, twitter } = req.value.body;
@@ -31,9 +31,13 @@ module.exports = {
 
             // Respond with token
             res.status(200).json({ token });
+            logger.info(`Created User : ${userInstance.email} `);
         });
     },
     signinUser: async(req, res, next) =>{
         // Generate token
+
+
+        res.end('Responding from Signin User');
     }
 };
