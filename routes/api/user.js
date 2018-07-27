@@ -29,7 +29,9 @@ module.exports = {
     },
     signinUser: async(req, res, next) =>{
         // Generate token
-
-        res.end('Responding from Signin User');
+        logger.info(`signing in User : ${req.email} `);
+        
+        const token = signToken(req.user, JWT_SECRET);
+        res.status(200).json({ token });
     }
 };

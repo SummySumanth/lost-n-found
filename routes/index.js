@@ -14,7 +14,7 @@ router.get('/', (request, response, next) =>{
 });
 
 // For Signin
-router.get('/signin',validateBody(schemas.signinSignupSchema), user.signinUser);
+router.post('/signin',validateBody(schemas.signinSignupSchema), passport.authenticate('local',{ session: false}),user.signinUser);
 
 // For Signup
 router.post('/signup', validateBody(schemas.signinSignupSchema),user.createUser);

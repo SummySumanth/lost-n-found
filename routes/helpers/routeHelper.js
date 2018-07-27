@@ -4,6 +4,7 @@ module.exports = {
     validateBody : (schema) =>{
         return (req,res,next) =>{
             const result =  joi.validate(req.body, schema );
+            
             if(result.error){
                 return res.status(400).json(result.error)
             }
@@ -16,7 +17,7 @@ module.exports = {
         }
     },
     schemas: {
-        authSchema: joi.object().keys({
+        signinSignupSchema: joi.object().keys({
             email: joi.string().email().required(),
             password: joi.string().required(),
         })
