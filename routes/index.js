@@ -14,10 +14,10 @@ router.get('/', (request, response, next) =>{
 });
 
 // For Signin
-router.get('/user', user.signinUser);
+router.get('/signin',validateBody(schemas.signinSignupSchema), user.signinUser);
 
 // For Signup
-router.post('/user', validateBody(schemas.authSchema),user.createUser);
+router.post('/signup', validateBody(schemas.signinSignupSchema),user.createUser);
 
 // For Queries 
 router.get('/authorized', passport.authenticate('jwt',{ session: false}), authorized.secret );

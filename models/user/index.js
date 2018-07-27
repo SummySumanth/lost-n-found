@@ -4,7 +4,6 @@ const bcrypt = require('bcryptjs');
 
 //Create Schema and Model
 const userSchema = new Schema({
-    name: String,
     password : {
         type : String,
         required : true
@@ -14,13 +13,7 @@ const userSchema = new Schema({
         required : true,
         unique: true,
         lowercase: true
-    },
-    phone: Number,
-    display_picture: String,
-    address: String,
-    blood_group: String,
-    facebook: String,
-    twitter: String
+    }
 });
 
 userSchema.pre('save', async function(next){

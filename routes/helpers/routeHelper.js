@@ -7,6 +7,7 @@ module.exports = {
             if(result.error){
                 return res.status(400).json(result.error)
             }
+
             if(!req.value){ 
                 req.value = {}; 
             }
@@ -18,13 +19,6 @@ module.exports = {
         authSchema: joi.object().keys({
             email: joi.string().email().required(),
             password: joi.string().required(),
-            name: joi.string().required(),
-            phone: joi.number().required(),
-            displayPicture: joi.string().required(),
-            address: joi.string().required(),
-            bloodGroup: joi.string().required(),
-            facebook: joi.string().required(),
-            twitter: joi.string().required()
         })
     }
 }

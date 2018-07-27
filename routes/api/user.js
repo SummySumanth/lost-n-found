@@ -5,7 +5,7 @@ const { JWT_SECRET } = require('../../auth/configurations');
 let logger = require('logger').createLogger('development.log');
 module.exports = {
     createUser: async(req, res, next) =>{
-        let {name, password, email, phone, displayPicture, address, bloodGroup, facebook, twitter } = req.value.body;
+        let {email, password} = req.value.body;
         
         let foundUser = await User.findOne({ email });
 
@@ -14,15 +14,8 @@ module.exports = {
         } 
                
         let userInstance = new User({
-            name, 
-            password,
             email, 
-            phone, 
-            displayPicture, 
-            address, 
-            bloodGroup, 
-            facebook, 
-            twitter 
+            password
         });
 
         userInstance.save().then(()=>{
@@ -36,7 +29,6 @@ module.exports = {
     },
     signinUser: async(req, res, next) =>{
         // Generate token
-
 
         res.end('Responding from Signin User');
     }
