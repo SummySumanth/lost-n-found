@@ -2,7 +2,9 @@ const passport = require('passport');
 const JwtStrategy = require('passport-jwt').Strategy ;
 const { ExtractJwt } = require('passport-jwt');
 const LocalStrategy = require('passport-local').Strategy;
-const { JWT_SECRET } =  require('./auth/configurations')
+const { JWT_SECRET, googleClientID, googleClientSecret } =  require('./auth/configurations');
+const googlePlusTokenStrategy =  require('passport-google-plus-token');
+const logger = require('logger').createLogger('passport.log');
 const User = require('./models/user');
 
 //JSON WEB TOKENS STRATEGY
@@ -27,6 +29,15 @@ passport.use(new JwtStrategy({
     }
 }
 ));
+
+// GOOGLE OAUTH STRATEGY
+passport.use('googleToken',new googlePlusTokenStrategy({
+    clientID : googleClientID,
+    clientSecret  : googleClientSecret
+}, async (accessToken, refreshToken, profile, done)=>{
+    logger.info('User, ', profile );
+    const user =  await User.findOne({email : profile.email[0].value})
+}));
 
 //LOCAL STRATEGY
 passport.use(new LocalStrategy({

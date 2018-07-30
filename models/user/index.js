@@ -4,15 +4,27 @@ const bcrypt = require('bcryptjs');
 
 //Create Schema and Model
 const userSchema = new Schema({
-    password : {
-        type : String,
-        required : true
-    },
-    email: {
+    method  : {
         type : String,
         required : true,
-        unique: true,
-        lowercase: true
+        enum : ['local','google','facebook']
+    },
+    local : {
+        email: {
+            type : String,
+            required : true,
+            unique: true,
+            lowercase: true
+        },
+        password : {
+            type : String,
+            required : true
+        }
+    },
+    google : {
+    },
+    facebook : {
+
     }
 });
 
