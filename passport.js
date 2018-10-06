@@ -35,8 +35,13 @@ passport.use('googleToken',new googlePlusTokenStrategy({
     clientID : googleClientID,
     clientSecret  : googleClientSecret
 }, async (accessToken, refreshToken, profile, done)=>{
-    logger.info('User, ', profile );
-    const user =  await User.findOne({email : profile.email[0].value})
+    // const user =  await User.findOne({email : profile.email[0].value});
+    const existingUser = await User.findOne({"google.id": profile.id});
+    if(existingUser){
+        return done(null, existingUser); 
+    }else{
+        const newUser = 
+    }
 }));
 
 //LOCAL STRATEGY

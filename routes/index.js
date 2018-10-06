@@ -26,3 +26,4 @@ router.post('/signup', validateBody(schemas.signinSignupSchema),user.createUser)
 router.get('/authorized', passport.authenticate('jwt',{ session: false}), authorized.secret );
 
 module.exports = router;
+ 
