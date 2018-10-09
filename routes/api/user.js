@@ -6,31 +6,39 @@ let logger = require('logger').createLogger('development.log');
 module.exports = {
     createUser: async(req, res, next) =>{
         let {email, password} = req.value.body;
-        
-        let foundUser = await User.findOne({ email });
+        let foundUser = await User.findOne({ "local.email" : email });
 
         if(foundUser){
            return  res.status(403).send({error: 'email is already in use'});
         } 
-               
-        let userInstance = new User({
-            email, 
-            password
+        
+        let newUser = new User({
+            method: 'local',
+            local: { 
+                email: email, 
+                password: password
+            }
         });
 
-        userInstance.save().then(()=>{
-            // Genereate Token 
-            const token = signToken(userInstance, JWT_SECRET);
-
-            // Respond with token
-            res.status(200).json({ token });
-            logger.info(`Created User : ${userInstance.email} `);
-        });
+        await newUser.save();
+        const token = signToken(newUser, JWT_SECRET);
+        res.status(200).json({ token });
+        
+        logger.info(`Created User : ${userInstance.email} `);
+        
+    },
+    googleOAuth : async(req, res, next)=>{
+        // console.log(req.user);
+        const token = signToken(req.user, JWT_SECRET);
+        res.status(200).json({ token });
+    },
+    facebookOAuth : async(req, res, next)=>{
+        // console.log(req.user);
+        const token = signToken(req.user, JWT_SECRET);
+        res.status(200).json({ token });
     },
     signinUser: async(req, res, next) =>{
         // Generate token
-        logger.info(`signing in User : ${req.email} `);
-        
         const token = signToken(req.user, JWT_SECRET);
         res.status(200).json({ token });
     }

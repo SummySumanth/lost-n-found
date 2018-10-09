@@ -17,7 +17,10 @@ router.get('/', (request, response, next) =>{
 router.post('/signin',validateBody(schemas.signinSignupSchema), passport.authenticate('local',{ session: false}),user.signinUser);
 
 // For GOOGLE OAUTH
-router.post('/oauth/google', passport.authenticate('googleToken', {session: false}))
+router.post('/oauth/google', passport.authenticate('googleToken', {session: false}), user.googleOAuth);
+
+// For FACEBOOK OAUTH
+router.post('/oauth/facebook', passport.authenticate('facebookToken', {session: false}), user.facebookOAuth);
 
 // For Signup
 router.post('/signup', validateBody(schemas.signinSignupSchema),user.createUser);

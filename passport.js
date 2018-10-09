@@ -2,8 +2,9 @@ const passport = require('passport');
 const JwtStrategy = require('passport-jwt').Strategy ;
 const { ExtractJwt } = require('passport-jwt');
 const LocalStrategy = require('passport-local').Strategy;
-const { JWT_SECRET, googleClientID, googleClientSecret } =  require('./auth/configurations');
+const { JWT_SECRET, OAuth} =  require('./auth/configurations');
 const googlePlusTokenStrategy =  require('passport-google-plus-token');
+const facebookTokenStrategy = require('passport-facebook-token');
 const logger = require('logger').createLogger('passport.log');
 const User = require('./models/user');
 
@@ -16,12 +17,10 @@ passport.use(new JwtStrategy({
         //find the user specified in token
         const user =  await User.findById(payload.sub);
         
-        //if user doesn't exists, handle it
         if(!user){
             return done(null, false);
         }
         
-        // otherwise, return the user
         done(null, user);
 
     }catch(error ){
@@ -32,16 +31,49 @@ passport.use(new JwtStrategy({
 
 // GOOGLE OAUTH STRATEGY
 passport.use('googleToken',new googlePlusTokenStrategy({
-    clientID : googleClientID,
-    clientSecret  : googleClientSecret
+    clientID : OAuth.google.clientID,
+    clientSecret  : OAuth.google.clientSecret
 }, async (accessToken, refreshToken, profile, done)=>{
-    // const user =  await User.findOne({email : profile.email[0].value});
-    const existingUser = await User.findOne({"google.id": profile.id});
-    if(existingUser){
-        return done(null, existingUser); 
-    }else{
-        const newUser = 
+    console.log('reached goooooogle');
+    try{
+        const existingUser = await User.findOne({"google.id": profile.id});
+        if(existingUser){
+            console.log('exisiting!!!!');
+            return done(null, existingUser); 
+        }
+        console.log('CHECK1');
+        const newUser = new User({
+            method: 'google',
+            google:{
+                id:profile.id,
+                email:profile.emails[0].value
+            }
+        });
+        console.log('CHECK2');
+        await newUser.save(); 
+        console.log('CHECK3');
+        done(null,newUser);
+        console.log('CHECK4');
+    }catch(error){
+        done(error, false, error.message);
     }
+    
+}));
+
+// FACEBOOK OAUTH STRATEGY
+passport.use('facebookToken',new facebookTokenStrategy({
+    clientID : OAuth.facebook.clientID,
+    clientSecret  : OAuth.facebook.clientSecret
+}, async (accessToken, refreshToken, profile, done)=>{
+    console.log('profile', profile);
+    console.log('access token', accessToken);
+    console.log('refreshToken', refreshToken);
+    try{
+        
+    }catch(error){
+        done(error, false, error.message);
+    }
+    
 }));
 
 //LOCAL STRATEGY
@@ -50,7 +82,7 @@ passport.use(new LocalStrategy({
 }, async(email, password, done)=>{
         try{
             // Find the user given the email
-        const user = await User.findOne({ email });
+        const user = await User.findOne({ "local.email": email });
 
         // If not found, handle it
         if(!user){
@@ -67,7 +99,6 @@ passport.use(new LocalStrategy({
         return done(null,user);
     }catch(error) {
         return done(error,false);
-    }
-    
+    }   
 }
 ));
