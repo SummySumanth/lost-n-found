@@ -2,6 +2,7 @@ let path = require('path');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ReactRootPlugin = require('html-webpack-root-plugin');
+
 const moduleObj = {
     rules: [
         {
@@ -42,9 +43,10 @@ module.exports = {
         title:"Summy's Boilerplate", 
         hash: true,
         inject: false,
-        template: 'template.ejs'
+        template: 'template.ejs',
+        baseUrl: '/'
       }),
-      new BundleAnalyzerPlugin(),
+      // new BundleAnalyzerPlugin(),
       // new ReactRootPlugin()
     ]
 };
