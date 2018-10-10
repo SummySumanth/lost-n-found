@@ -38,10 +38,8 @@ passport.use('googleToken',new googlePlusTokenStrategy({
     try{
         const existingUser = await User.findOne({"google.id": profile.id});
         if(existingUser){
-            console.log('exisiting!!!!');
             return done(null, existingUser); 
         }
-        console.log('CHECK1');
         const newUser = new User({
             method: 'google',
             google:{
@@ -49,11 +47,8 @@ passport.use('googleToken',new googlePlusTokenStrategy({
                 email:profile.emails[0].value
             }
         });
-        console.log('CHECK2');
         await newUser.save(); 
-        console.log('CHECK3');
         done(null,newUser);
-        console.log('CHECK4');
     }catch(error){
         done(error, false, error.message);
     }
@@ -69,7 +64,21 @@ passport.use('facebookToken',new facebookTokenStrategy({
     console.log('access token', accessToken);
     console.log('refreshToken', refreshToken);
     try{
-        
+        const existingUser = await User.findOne({"facebook.id": profile.id});
+        if(existingUser){
+            return done(null, existingUser); 
+        }
+        const newUser = new User({
+            method: 'facebook',
+            facebook:{
+                id:profile.id,
+                email:profile.emails[0].value
+            }
+        });
+        console.log('REACHED HERE123');
+        await newUser.save(); 
+        console.log('REACHED HERE456');
+        done(null,newUser);
     }catch(error){
         done(error, false, error.message);
     }

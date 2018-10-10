@@ -28,17 +28,14 @@ module.exports = {
         
     },
     googleOAuth : async(req, res, next)=>{
-        // console.log(req.user);
         const token = signToken(req.user, JWT_SECRET);
         res.status(200).json({ token });
     },
     facebookOAuth : async(req, res, next)=>{
-        // console.log(req.user);
         const token = signToken(req.user, JWT_SECRET);
-        res.status(200).json({ token });
+        res.status(200).json( {token} );
     },
     signinUser: async(req, res, next) =>{
-        // Generate token
         const token = signToken(req.user, JWT_SECRET);
         res.status(200).json({ token });
     }
