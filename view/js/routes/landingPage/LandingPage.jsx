@@ -1,6 +1,5 @@
 import React,{ Component } from 'react';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
+
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Welcome from '../../components/landingPage/welcomeContainer';
@@ -12,8 +11,6 @@ import '../../../scss/Components/landingPage/landingPage.scss';
 
 
 class LandingPage extends Component{
-
-    
     render(){
     const { match } = this.props;    
         return(
@@ -46,18 +43,4 @@ class LandingPage extends Component{
     }
 }
 
-
-let mapStateToProps = (state) =>{
-    return {
-        users : state.users,
-        activeUser : state.activeUser,
-    }
-}
-
-let matchDispatchToProps = (dispatch) =>{
-    return bindActionCreators({
-        // selectUser: selectUser
-    }, dispatch);
-}
-
-export default connect(mapStateToProps, matchDispatchToProps)(LandingPage);
+export default LandingPage;

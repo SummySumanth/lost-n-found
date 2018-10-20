@@ -40,7 +40,6 @@ let startServer = () =>{
 
     // Starting Server
     app.listen(8000 ,"0.0.0.0", () =>{
-        
         logger.info(`server start on port 8000 `);
         console.log('Server is now running at port 8000 in localhost somechange');
     });

@@ -1,13 +1,11 @@
 import { combineReducers } from 'redux';
 
-// Dummy Reducers Delete these imports
-import usersReducers from './dummyReducerDeleteThis/dummyA';
-import activeUserReducer from './dummyReducerDeleteThis/activeUserReducer';
+import signinReducer from './signinPage/signinPage';
+import authReducer from './auth/auth';
 
-// Dummy Reducers, Remove these before starting 
 const allReducers = combineReducers({
-    users : usersReducers,
-    activeUser : activeUserReducer
+    auth: authReducer,
+    signin : signinReducer
 });
 
 export default allReducers;

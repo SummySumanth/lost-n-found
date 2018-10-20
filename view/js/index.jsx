@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { createLogger } from 'redux-logger';
 import allReducers from './reducers/index';
 import Routes from './routes';
-
+import thunk from 'redux-thunk';
 import '../scss/start.scss';
 
 
@@ -37,9 +37,9 @@ const loggerMiddleware = createLogger({ predicate: () => ({ logger: console, dif
 
 const store = createStore(
     allReducers,
-    applyMiddleware(loggerMiddleware)
+    applyMiddleware(thunk ,loggerMiddleware)
 );
-
+    
 ReactDOM.render(
     <Provider store={store}>
         <MuiThemeProvider theme={theme}>

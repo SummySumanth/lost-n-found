@@ -17,9 +17,9 @@ class Signup extends Component{
                     </div>
                 </div>
                 <div className='lnf-LPcard-actions'>
-                    <Link to="signin">
+                    <Link to={'/'}>
                         <Button color="primary" className={classes.button} >
-                            Sign in
+                            Back
                         </Button>
                     </Link>
                     
