@@ -1,18 +1,11 @@
 import React,{ Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import Button from '@material-ui/core/Button';
-import classes from 'classNames';
-import Icon from '@material-ui/core/Icon';
-
   
 class Welcome extends Component{
     
-
     render(){
-
         const { match } = this.props;
-        
         return(
             <div className='lnf-LPcard-container'>
                 <div className='lnf-LPcard-header'>Welcome</div>
@@ -27,15 +20,11 @@ class Welcome extends Component{
                 </div>
                 <div className='lnf-LPcard-actions'>
                     <Link to={this.props.location.pathname + '/signin'}>
-                        <Button color="primary" className={classes.button} >
-                            Sign in
-                        </Button>
+                        <input type="button" value='Sign in'/>
                     </Link>
                     
                     <Link to={this.props.location.pathname + '/signup'}>
-                        <Button color="primary" className={classes.button} >
-                            Sign up
-                        </Button>
+                        <input type="button" value='Sign up'/>
                     </Link>
                 </div>
             </div>

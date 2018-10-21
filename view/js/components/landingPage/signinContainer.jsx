@@ -1,10 +1,6 @@
 import React,{ Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import Button from '@material-ui/core/Button';
-import classes from 'classNames';
-import Icon from '@material-ui/core/Icon';
-
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
@@ -33,6 +29,7 @@ class Signin extends Component{
         }
         
     }
+    
     render(){
         console.log('changed7653421');
         return(
@@ -58,17 +55,13 @@ class Signin extends Component{
                         
                     </div>
                 </div>
-            </div>
+            </div> 
             <div className='lnf-LPcard-actions'>
                 <Link to={'/'}>
-                    <Button color="primary" className={classes.button} >
-                        Back
-                    </Button>
+                    <input type="button" value='Back'/>
                 </Link>
                 
-                <Button color="primary" className={classes.button} onClick={()=>this.submitHandler()} >
-                    Submit
-                </Button>
+                <input type="button" value='Sign in' onClick={()=>this.submitHandler()} />
             </div>
         </div>
         );

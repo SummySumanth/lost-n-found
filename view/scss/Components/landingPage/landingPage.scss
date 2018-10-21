@@ -69,7 +69,7 @@ body{
 }
 
 .lnf-LPcard-header{
-    font-size: 20pt;
+    font-size: 34pt;
     color: $color-font-light-mode;
 }
 
@@ -112,6 +112,11 @@ body{
     cursor: pointer;
     align-self: center;
     transition: all 500ms ease;
+}
+
+.lnf-LPcard-content-body-divider{
+    font-size: 25pt;
+    color: #969696;
 }
 
 .lnf-LPcard-content-body-signin-social-logo:hover{
