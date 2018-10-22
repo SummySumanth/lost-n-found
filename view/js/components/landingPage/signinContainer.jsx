@@ -35,7 +35,7 @@ class Signin extends Component{
         return(
             <div className='lnf-LPcard-container'>
             <div className='lnf-LPcard-header'>Signin</div>
-            <div className='lnf-LPcard-content'>
+
                 <div className='lnf-LPcard-content-body-signin'>
                     <div className='lnf-LPcard-content-body-signin-social'>
                         {/* <div class='lnf-LPcard-content-body-signin-social-logo'> */}
@@ -49,19 +49,28 @@ class Signin extends Component{
                         or
                     </div>
                     <div className='lnf-LPcard-content-body-signin-local'>
-                        <input type="email" placeholder='email' onChange={(e)=>this.props.dispatch(SigninPageActions.usernameInputHandler(e.target.value))}/>
-                        <input type="password" placeholder='password' onChange={(e)=>this.props.dispatch(SigninPageActions.passwordInputHandler(e.target.value))}/>
-                        {this.getErrorMessage()}
-                        
+                        <div className='lnf-LPcard-content-body-signin-local-input'>
+                            <div>
+                                {this.getErrorMessage()}
+                            </div>
+                            <input type="email" placeholder='email' onChange={(e)=>this.props.dispatch(SigninPageActions.usernameInputHandler(e.target.value))}/>
+                            <input type="password" placeholder='password' onChange={(e)=>this.props.dispatch(SigninPageActions.passwordInputHandler(e.target.value))}/>
+                        </div>
+                        <div className='lnf-LPcard-content-body-signin-local-submit'>
+                            <input type="button" value='Sign in' onClick={()=>this.submitHandler()} />
+                        </div>
                     </div>
                 </div>
-            </div> 
+
+
             <div className='lnf-LPcard-actions'>
                 <Link to={'/'}>
                     <input type="button" value='Back'/>
                 </Link>
-                
-                <input type="button" value='Sign in' onClick={()=>this.submitHandler()} />
+
+                <Link to={this.props.location.pathname + '/signup'}>
+                        <input type="button" value='Sign up'/>
+                </Link>
             </div>
         </div>
         );
