@@ -75,9 +75,7 @@ passport.use('facebookToken',new facebookTokenStrategy({
                 email:profile.emails[0].value
             }
         });
-        console.log('REACHED HERE123');
         await newUser.save(); 
-        console.log('REACHED HERE456');
         done(null,newUser);
     }catch(error){
         done(error, false, error.message);
@@ -89,22 +87,19 @@ passport.use('facebookToken',new facebookTokenStrategy({
 passport.use(new LocalStrategy({
     usernameField: 'email'
 }, async(email, password, done)=>{
-        try{
-            // Find the user given the email
+    try{
         const user = await User.findOne({ "local.email": email });
 
-        // If not found, handle it
         if(!user){
             return done(null, false);
         }
-        // If found, Check whether password is correct 
+        
         const isMatch = await user.isValidPassword(password);
         
-        // If not, handle it
         if(!isMatch){
             return done(null,false);
         }
-        // Otherwise return the user
+
         return done(null,user);
     }catch(error) {
         return done(error,false);

@@ -38,5 +38,6 @@ module.exports = {
     signinUser: async(req, res, next) =>{
         const token = signToken(req.user, JWT_SECRET);
         res.status(200).json({ token });
+
     }
 };

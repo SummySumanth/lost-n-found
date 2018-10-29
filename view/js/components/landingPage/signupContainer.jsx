@@ -1,9 +1,6 @@
 import React,{ Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import Button from '@material-ui/core/Button';
-import classes from 'classNames';
-import Icon from '@material-ui/core/Icon';
 
 
 class Signup extends Component{
@@ -17,16 +14,12 @@ class Signup extends Component{
                     </div>
                 </div>
                 <div className='lnf-LPcard-actions'>
-                    <Link to="signin">
-                        <Button color="primary" className={classes.button} >
-                            Sign in
-                        </Button>
+                    <Link to={'/'}>
+                        <input type="button" value='Back'/>
                     </Link>
                     
                     <Link to="signup">
-                        <Button color="primary" className={classes.button} >
-                            Sign up
-                        </Button>
+                        <input type="button" value='Signup'/>
                     </Link>
                 </div>
             </div>

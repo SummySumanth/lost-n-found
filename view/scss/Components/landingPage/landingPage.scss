@@ -69,7 +69,7 @@ body{
 }
 
 .lnf-LPcard-header{
-    font-size: 20pt;
+    font-size: 34pt;
     color: $color-font-light-mode;
 }
 
@@ -99,8 +99,10 @@ body{
 
 .lnf-LPcard-content-body-signin{
     flex: 1;
-    // padding: 12px;
-    margin: 20px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 20px 0;
 }
 
 .lnf-LPcard-content-body-signin-social{
@@ -114,9 +116,25 @@ body{
     transition: all 500ms ease;
 }
 
+.lnf-LPcard-content-body-divider{
+    font-size: 25pt;
+    color: #969696;
+}
+.lnf-LPcard-content-body-signin-local{
+    display: flex;
+    
+}
+.lnf-LPcard-content-body-signin-local-input{
+    display: flex;
+    flex-direction: column
+}
+.lnf-LPcard-content-body-signin-local-submit{
+
+}
 .lnf-LPcard-content-body-signin-social-logo:hover{
     filter: brightness(80%);
 }
 .lnf-LPcard-content-body-signin-social-logo:active{
     filter: brightness(60%);
 }
+

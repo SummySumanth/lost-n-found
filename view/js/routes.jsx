@@ -30,7 +30,6 @@ const NotFound = Loadable({
 
 
 class Routes extends Component{
-    
     render(){
         return(
             <BrowserRouter>

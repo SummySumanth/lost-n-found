@@ -12,7 +12,6 @@ const userSchema = new Schema({
     local : {
         email: {
             type : String,
-            unique: true,
             lowercase: true
         },
         password : {

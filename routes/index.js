@@ -13,8 +13,8 @@ router.get('/', (request, response, next) =>{
     next();
 });
 
-// For Signin
-router.post('/signin',validateBody(schemas.signinSignupSchema), passport.authenticate('local',{ session: false}),user.signinUser);
+// For Signin 
+router.post('/signin', validateBody(schemas.signinSignupSchema), passport.authenticate('local',{ session: false}),user.signinUser);
 
 // For GOOGLE OAUTH
 router.post('/oauth/google', passport.authenticate('googleToken', {session: false}), user.googleOAuth);
