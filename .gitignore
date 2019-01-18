@@ -490,8 +490,8 @@ __pycache__/
 *.xsd.cs
 
 # dist files
-*bundle.js
-dist/public/index.html
+dist/public/*.js
+dist/public/*.html
 
 ### VisualStudio Patch ###
 # By default, sensitive information, such as encrypted password
