@@ -491,6 +491,7 @@ __pycache__/
 
 # dist files
 *bundle.js
+dist/public/index.html
 
 ### VisualStudio Patch ###
 # By default, sensitive information, such as encrypted password
