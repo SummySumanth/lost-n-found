@@ -10,7 +10,7 @@ class Signup extends Component{
                 <div className='lnf-LPcard-header'>Signup</div>
                 <div className='lnf-LPcard-content'>
                     <div className='lnf-LPcard-content-body'>
-                        this is signup
+                        this is signup123
                     </div>
                 </div>
                 <div className='lnf-LPcard-actions'>
