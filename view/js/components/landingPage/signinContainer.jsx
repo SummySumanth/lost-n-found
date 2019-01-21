@@ -35,7 +35,7 @@ class Signin extends Component{
     }
     
     responseGoogle(response){
-        console.log('google response :456 ', response);
+        console.log('google response : ', response);
         this.props.dispatch(AuthActions.googleOAuth(response.accessToken));
     }
 

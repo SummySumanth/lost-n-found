@@ -27,6 +27,10 @@ const AuthActions = {
 
     googleOAuth: (data) => (dispatch) =>{
         console.log('action received access token', data);
+    },
+
+    tokenValidity: () =>{
+        console.log('asking token validity');
     }
 }
 
