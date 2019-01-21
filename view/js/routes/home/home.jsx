@@ -5,7 +5,8 @@ import {connect} from 'react-redux';
 class Home extends Component{
 
     componentWillMount(){
-        console.log('component will mount;')
+        console.log('component will mount;');
+        
     }
 
     render(){
