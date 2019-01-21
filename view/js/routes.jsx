@@ -1,6 +1,6 @@
 import React,{ Component } from 'react';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
-
+import { Router, Switch, Route, Redirect } from 'react-router-dom';
+import history from './routes/history';
 import Loadable from 'react-loadable';
 
 // import LandingPage from './routes/landingPage/LandingPage';
@@ -32,7 +32,7 @@ const NotFound = Loadable({
 class Routes extends Component{
     render(){
         return(
-            <BrowserRouter>
+            <Router history={history}>
                 <Switch>
                     <Route exact path='/' render={() => (    <Redirect to="/landing" />      )}/>
                     <Route path='/landing' component={LandingPage}/>
@@ -40,7 +40,7 @@ class Routes extends Component{
                     <Route path='/notFound' component={NotFound}/>
                     <Route path='/*' component={NotFound}/>
                 </Switch>
-            </BrowserRouter>
+            </Router>
         )
     }
 }
