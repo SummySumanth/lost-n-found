@@ -22,7 +22,7 @@ module.exports = {
 
         await newUser.save();
         const token = signToken(newUser, JWT_SECRET);
-        res.status(200).json({ token });
+        res.status(200).json({ token, redirect: ''});
         
         logger.info(`Created User : ${userInstance.email} `);
         
