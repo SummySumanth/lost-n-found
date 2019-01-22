@@ -1,5 +1,6 @@
 import {signin} from '../../services/signin/signin';
-
+import auth from '../../services/auth/auth';
+import history from '../../routes/history';
 const AuthActionTypes = {
     TOKEN_RECEIVED : 'TOKEN_RECEIVED',
     INVALID_USER : 'INVALID_USER',
@@ -18,7 +19,13 @@ const AuthActions = {
     invalidUser: (token) => ({type: AuthActionTypes.INVALID_USER, payload: token}),
 
     googleOAuth: (data) => (dispatch) =>{
-        console.log('action received access token', data);
+        let payload = {
+            access_token : data
+        }
+        auth.googleSignin(payload).then(response=>{
+            dispatch(AuthActions.tokenReceived(response.data.token));
+            history.push(response.data.redirect);
+        })
     },
 
     tokenValidity: () =>{

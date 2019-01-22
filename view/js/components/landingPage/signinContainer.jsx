@@ -26,7 +26,7 @@ class Signin extends Component{
         if(errObj){
             return(
                 <div>
-                    INVALID USERNAME OR PASSWORD changed
+                    INVALID USERNAME OR PASSWORD
                 </div>
             );
         }
@@ -34,7 +34,6 @@ class Signin extends Component{
     }
     
     responseGoogle(response){
-        console.loh('reached response');
         console.log('google response : ', response);
         this.props.dispatch(AuthActions.googleOAuth(response.accessToken));
     }
@@ -55,8 +54,8 @@ class Signin extends Component{
                             render={renderProps => (
                                 <img class='lnf-LPcard-content-body-signin-social-logo' src='/assets/images/google.png'  onClick={renderProps.onClick} />
                                 )}
-                            onSuccess={()=>this.responseGoogle}
-                            onFailure={()=>this.responseGoogle}
+                            onSuccess={(data)=>this.responseGoogle(data)}
+                            onFailure={(data)=>this.responseGoogle(data)}
                         />
                         <FacebookLogin
                             appId="273464073501603"

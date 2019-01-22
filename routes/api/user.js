@@ -28,13 +28,12 @@ module.exports = {
         
     },
     googleOAuth : async(req, res, next)=>{
-        console.log('reached google o auth ');
         const token = signToken(req.user, JWT_SECRET);
-        res.status(200).json({ token });
+        res.status(200).json({ token, redirect: '/home'});
     },
     facebookOAuth : async(req, res, next)=>{
         const token = signToken(req.user, JWT_SECRET);
-        res.status(200).json( {token} );
+        res.status(200).json( {token, redirect: '/home'} );
     },
     signinUser: async(req, res, next) =>{
         const token = signToken(req.user, JWT_SECRET);
