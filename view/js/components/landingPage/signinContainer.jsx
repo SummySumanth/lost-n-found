@@ -2,7 +2,7 @@ import React,{ Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 import {SigninPageActions} from '../../actions/signinPage/signinPageAction';
 import {AuthActions} from '../../actions/auth/auth';
@@ -35,7 +35,8 @@ class Signin extends Component{
     }
     
     responseGoogle(response){
-        console.log('google response :456 ', response);
+        console.loh('reached response');
+        console.log('google response : ', response);
         this.props.dispatch(AuthActions.googleOAuth(response.accessToken));
     }
 
@@ -91,7 +92,7 @@ class Signin extends Component{
                         <input type="button" value='Back'/>
                     </Link>
 
-                    <Link to={this.props.location.pathname + '/signup'}>
+                    <Link to={'signup'}>
                             <input type="button" value='Sign up'/>
                     </Link>
                 </div>

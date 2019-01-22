@@ -1,6 +1,6 @@
 import {raiseStatus} from '../../scripts/https';
-import axios from 'axios';
-const signin = (payload) => fetch('/api/signup',{
+
+const signup = (payload) => fetch('/api/signup',{
             method: 'POST',
             headers:{
                 'Content-Type': 'application/json'

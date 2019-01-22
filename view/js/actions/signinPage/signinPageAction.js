@@ -5,9 +5,9 @@ const SigninPageActionTypes = {
 }
 
 const SigninPageActions = {
-    usernameInputHandler: data => ({type: SigninPageActionTypes.USERNAME_INPUT, payload: data}),
+    usernameInputHandler: payload => ({type: SigninPageActionTypes.USERNAME_INPUT, payload}),
 
-    passwordInputHandler: data => ({type: SigninPageActionTypes.PASSWORD_INPUT, payload: data}),
+    passwordInputHandler: payload => ({type: SigninPageActionTypes.PASSWORD_INPUT, payload}),
 }
 
 export {

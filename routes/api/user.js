@@ -22,12 +22,13 @@ module.exports = {
 
         await newUser.save();
         const token = signToken(newUser, JWT_SECRET);
-        res.status(200).json({ token });
+        res.status(200).json({ token, redirect: '/home'});
         
         logger.info(`Created User : ${userInstance.email} `);
         
     },
     googleOAuth : async(req, res, next)=>{
+        console.log('reached google o auth ');
         const token = signToken(req.user, JWT_SECRET);
         res.status(200).json({ token });
     },

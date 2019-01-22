@@ -489,6 +489,10 @@ __pycache__/
 *.odx.cs
 *.xsd.cs
 
+# dist files
+dist/public/*.js
+dist/public/*.html
+
 ### VisualStudio Patch ###
 # By default, sensitive information, such as encrypted password
 # should be stored in the .pubxml.user file.

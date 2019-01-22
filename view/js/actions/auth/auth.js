@@ -12,7 +12,7 @@ const AuthActions = {
     tokenReceived: (token) => {
         console.log('stored in local storage, token changed:', token.token);
         localStorage.setItem('JWT_TOKEN', token.token);
-        return {type: AuthActionTypes.TOKEN_RECEIVED, payload: token}
+        return {type: AuthActionTypes.TOKEN_RECEIVED}
     },
 
     invalidUser: (token) => ({type: AuthActionTypes.INVALID_USER, payload: token}),
@@ -27,6 +27,10 @@ const AuthActions = {
 
     googleOAuth: (data) => (dispatch) =>{
         console.log('action received access token', data);
+    },
+
+    tokenValidity: () =>{
+        console.log('asking token validity');
     }
 }
 

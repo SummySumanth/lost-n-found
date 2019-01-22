@@ -10,12 +10,13 @@ let routes = require('./routes');
 let app = express();
 
 let connectToDb = () =>{
-    mongoose.connect('mongodb://127.0.0.1:27017/lostAndFound');
+    // mongoose.connect('mongodb://127.0.0.1:27017/lostAndFound');
+    mongoose.connect('mongodb+srv://summy:testpassword@cluster0-kxts6.mongodb.net/lostAndFound?retryWrites=true');
     
     mongoose.connection.once('open',()=>{
         console.log('DB CONNECTION SUCCESSFUL');
     }).on('error',(error)=>{
-        console.log('DB CONNECTION FAILED (check whether database is running), error object : ', error);
+        console.log('DB CONNECTION FAILED (check whether database is running !), error object : ', error);
     });
 }
 
@@ -41,7 +42,7 @@ let startServer = () =>{
     // Starting Server
     app.listen(8000 ,"0.0.0.0", () =>{
         logger.info(`server start on port 8000 `);
-        console.log('Server is now running at port 8000 in localhost somechange');
+        console.log('Server is now running at port 8000 in localhost');
     });
 }
 

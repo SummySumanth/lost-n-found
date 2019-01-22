@@ -2,13 +2,12 @@ import {AuthActionTypes} from '../../actions/auth/auth';
 
 const initialState = {
     isAuthenticated : false,
-    token: '',
     errorMessage: ''
 }
 
 const AuthReducer = ((state = initialState, action)=>{
     switch(action.type){
-        case AuthActionTypes.TOKEN_RECEIVED: return ({...state, ...action.payload, isAuthenticated: true});
+        case AuthActionTypes.TOKEN_RECEIVED: return ({...state, isAuthenticated: true});
         break;
         case AuthActionTypes.INVALID_USER: return ({errorMessage: action.payload, isAuthenticated: false, token: ''});
         break;

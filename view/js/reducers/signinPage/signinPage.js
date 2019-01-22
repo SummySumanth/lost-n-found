@@ -6,7 +6,7 @@ const initialState ={
     password : ''
 }
 
-const landingPage = (state = initialState, action)=>{
+const signinPageReducer = (state = initialState, action)=>{
     switch(action.type){
         case SigninPageActionTypes.USERNAME_INPUT : return {...state, username: action.payload}
         break;
@@ -17,4 +17,4 @@ const landingPage = (state = initialState, action)=>{
     }
 }
 
-export default landingPage;
+export default signinPageReducer;
