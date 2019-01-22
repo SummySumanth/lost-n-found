@@ -18,8 +18,7 @@ class Signin extends Component{
             email: this.props.signin.username,
             password: this.props.signin.password
         }
-    
-        this.props.dispatch(AuthActions.credentailsSubmit(credentials));
+        this.props.dispatch(SigninPageActions.credentailsSubmit(credentials));
     }
     
     getErrorMessage(){
@@ -27,7 +26,7 @@ class Signin extends Component{
         if(errObj){
             return(
                 <div>
-                    INVALID USERNAME OR PASSWORD changed
+                    INVALID USERNAME OR PASSWORD
                 </div>
             );
         }
@@ -35,7 +34,6 @@ class Signin extends Component{
     }
     
     responseGoogle(response){
-        console.loh('reached response');
         console.log('google response : ', response);
         this.props.dispatch(AuthActions.googleOAuth(response.accessToken));
     }
@@ -45,7 +43,6 @@ class Signin extends Component{
     }
 
     render(){
-        console.log('changed7653421');
         return(
             <div className='lnf-LPcard-container'>
                 <div className='lnf-LPcard-header'>Signin</div>
@@ -57,8 +54,8 @@ class Signin extends Component{
                             render={renderProps => (
                                 <img class='lnf-LPcard-content-body-signin-social-logo' src='/assets/images/google.png'  onClick={renderProps.onClick} />
                                 )}
-                            onSuccess={()=>this.responseGoogle}
-                            onFailure={()=>this.responseGoogle}
+                            onSuccess={(data)=>this.responseGoogle(data)}
+                            onFailure={(data)=>this.responseGoogle(data)}
                         />
                         <FacebookLogin
                             appId="273464073501603"
