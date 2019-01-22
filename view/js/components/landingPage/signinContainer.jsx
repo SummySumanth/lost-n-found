@@ -18,8 +18,7 @@ class Signin extends Component{
             email: this.props.signin.username,
             password: this.props.signin.password
         }
-    
-        this.props.dispatch(AuthActions.credentailsSubmit(credentials));
+        this.props.dispatch(SigninPageActions.credentailsSubmit(credentials));
     }
     
     getErrorMessage(){
@@ -45,7 +44,6 @@ class Signin extends Component{
     }
 
     render(){
-        console.log('changed7653421');
         return(
             <div className='lnf-LPcard-container'>
                 <div className='lnf-LPcard-header'>Signin</div>
