@@ -26,7 +26,7 @@ class Signup extends Component{
                                 <input type="password" placeholder='password' onChange={(e)=>this.props.dispatch(signupPageActions.passwordInputHandler(e.target.value))}/>
                             </div>
                             <div className='lnf-LPcard-content-body-signin-local-submit'>
-                                <input type="button" value='Sign in' onClick={()=>this.submitHandler()} />
+                                <input type="button" value='Sign up' onClick={()=>this.submitHandler()} />
                             </div>
                         </div>
                     </div>
@@ -36,8 +36,8 @@ class Signup extends Component{
                         <input type="button" value='Back'/>
                     </Link>
                     
-                    <Link to="signup">
-                        <input type="button" value='Signup'/>
+                    <Link to="signin">
+                        <input type="button" value='Signin'/>
                     </Link>
                 </div>
             </div>

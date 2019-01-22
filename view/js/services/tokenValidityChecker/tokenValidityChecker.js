@@ -1,5 +1,13 @@
 import {raiseStatus} from '../../scripts/https';
 import axios from 'axios';
+import axiosConfig from '../../config/axiosServices';
+
+const tokenVC = () => axios.get('/api/authorized',axiosConfig).then(res=>{
+    console.log('validity checker response', res);
+});
+
+
+
 const signin = (payload) => fetch('/api/signup',{
             method: 'POST',
             headers:{
@@ -12,6 +20,4 @@ const signin = (payload) => fetch('/api/signup',{
         //     console.log('error was found at service,', err);
         // });
 
-export {
-    signup
-}
+export default tokenVC;

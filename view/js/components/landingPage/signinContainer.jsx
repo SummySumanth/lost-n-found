@@ -92,7 +92,7 @@ class Signin extends Component{
                         <input type="button" value='Back'/>
                     </Link>
 
-                    <Link to={this.props.location.pathname + '/signup'}>
+                    <Link to={'signup'}>
                             <input type="button" value='Sign up'/>
                     </Link>
                 </div>
