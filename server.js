@@ -11,7 +11,7 @@ let app = express();
 
 let connectToDb = () =>{
     // mongoose.connect('mongodb://127.0.0.1:27017/lostAndFound');
-    mongoose.connect('mongodb+srv://summy:testpassword@cluster0-kxts6.mongodb.net/lostAndFound?retryWrites=true');
+    mongoose.connect('mongodb+srv://summy:testpassword@cluster0-kxts6.mongodb.net/lostAndFound?retryWrites=true', { useNewUrlParser: true });
     
     mongoose.connection.once('open',()=>{
         console.log('DB CONNECTION SUCCESSFUL');

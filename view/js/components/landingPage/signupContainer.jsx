@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import signupPageActions from '../../actions/signupPage/signupPageActions';
 
+@connect(store =>({
+    signup: store.signup
+}))
+
 class Signup extends Component{
 
     submitHandler = () =>{
@@ -45,17 +49,4 @@ class Signup extends Component{
     }
 }
 
-const mapStateToProps = (state) =>{
-    return {
-        signup: state.signup
-    }
-}
-
-const matchDispatchToProps = (dispatch) =>{
-    const actions = bindActionCreators({
-        signupPageActions
-    });
-    return { ...actions, dispatch}
-}
-
-export default connect(mapStateToProps, matchDispatchToProps)(Signup);
+export default Signup;
