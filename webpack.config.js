@@ -9,6 +9,10 @@ const moduleObj = {
             test: /\.jsx?$/,
             exclude: /node_modules/,
             loader: "babel-loader",
+            query: {
+              cacheDirectory: true,
+              plugins: ['transform-decorators-legacy' ]
+            }
         },
         {
             test: /\.scss$/,
