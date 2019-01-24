@@ -40,7 +40,7 @@ let startServer = () =>{
     connectToDb();
 
     // Starting Server
-    app.listen(8000 ,"0.0.0.0", () =>{
+    app.listen(8080 ,"0.0.0.0", () =>{
         logger.info(`server start on port 8000 `);
         console.log('Server is now running at port 8000 in localhost');
     });
