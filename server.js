@@ -24,9 +24,12 @@ let startServer = () =>{
     // Middlewears
     app.use(morgan('dev'));
     app.use(bodyParser.json());
-    console.log('$$$  process.env: ', process.env);
+    // console.log('$$$  process.env: ', process.env);
     // console.log('###PORT NUMBER  process.env.PORT ::::  ',  process.env.PORT);
-
+    if(!process.env.PORT){
+        console.log('over riding port number');
+        // process.env.PORT = 8000;
+    }
     // Routing configurations
     app.use(express.static(__dirname + '/dist/public'));
     
@@ -42,8 +45,8 @@ let startServer = () =>{
     connectToDb();
 
     // Starting Server
-    app.listen(8080 ,"0.0.0.0", () =>{
-        logger.info(`server start on port 8000 `);
+    app.listen(process.env.PORT ,"0.0.0.0", () =>{
+        logger.info(`server start on port ${process.env.PORT} `);
         console.log('Server is now running at port 8000 in localhost');
     });
 }
