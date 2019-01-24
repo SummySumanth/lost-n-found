@@ -47,7 +47,7 @@ let startServer = () =>{
     // Starting Server
     app.listen(process.env.PORT ,"0.0.0.0", () =>{
         logger.info(`server start on port ${process.env.PORT} `);
-        console.log('Server is now running at port 8000 in localhost');
+        console.log(`Server is now running at port  ${process.env.PORT} in localhost`);
     });
 }
 
