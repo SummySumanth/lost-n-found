@@ -9,7 +9,7 @@
     "start-node-server": "nodemon server.js",
     "start-node-server-prod": "node server.js",
     "start-dev": "concurrently --kill-others \"npm run build-client\" \"npm run start-node-server\"",
-    "start":  "concurrently --kill-others \"npm run build-client\" \"npm run start-node-server-prod\"",
+    "start": "concurrently --kill-others \"npm run build-client\" \"npm run start-node-server-prod\"",
     "build-babel": "babel view/js --copy-files --out-dir ./dist/public"
   },
   "repository": {
@@ -78,7 +78,7 @@
     "redux-logger": "^3.0.6",
     "sass-loader": "^7.0.1",
     "webpack-bundle-analyzer": "^2.13.1",
-    "webpack-cli": "3.0.4",
+    "webpack-cli": "^3.0.4",
     "webpack-node-externals": "^1.7.2"
   }
 }
