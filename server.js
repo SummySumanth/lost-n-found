@@ -24,6 +24,8 @@ let startServer = () =>{
     // Middlewears
     app.use(morgan('dev'));
     app.use(bodyParser.json());
+    console.log('$$$  process.env: ', process.env);
+    console.log('###PORT NUMBER  process.env.PORT ::::  ',  process.env.PORT);
 
     // Routing configurations
     app.use(express.static(__dirname + '/dist/public'));
