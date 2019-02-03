@@ -28,7 +28,7 @@ let startServer = () =>{
     // console.log('###PORT NUMBER  process.env.PORT ::::  ',  process.env.PORT);
     if(!process.env.PORT){
         console.log('over riding port number');
-        // process.env.PORT = 8000;
+        process.env.PORT = 8001;
     }
     // Routing configurations
     app.use(express.static(__dirname + '/dist/public'));
@@ -47,7 +47,7 @@ let startServer = () =>{
     // Starting Server
     app.listen(process.env.PORT ,"0.0.0.0", () =>{
         logger.info(`server start on port ${process.env.PORT} `);
-        console.log('Server is now running at port 8000 in localhost');
+        console.log(`Server is now running at port  ${process.env.PORT} in localhost`);
     });
 }
 
