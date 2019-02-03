@@ -7,9 +7,6 @@ import Signin from '../../components/landingPage/signinContainer';
 import Signup from '../../components/landingPage/signupContainer';
 
 
-import '../../../scss/Components/landingPage/landingPage.scss';
-
-
 class LandingPage extends Component{
     render(){
     const { match } = this.props;    
